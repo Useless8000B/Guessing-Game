@@ -12,16 +12,19 @@ fn main() {
             .read_line(&mut guess)
             .expect("Error reading!");
 
-        let guess: i32 = guess.trim().parse().expect("Type a number!");
+        let guess: i32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue
+        };
         println!("You guessed {guess}");
 
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too small"),
-            Ordering::Equal => println!("You win!"),
-            Ordering::Greater => {
-                println!("Too big!");
+            Ordering::Equal => {
+                println!("You win!");
                 break;
             },
+            Ordering::Greater => println!("Too big!")
         }
     }
 }
