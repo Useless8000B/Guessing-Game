@@ -19,7 +19,7 @@ pub fn get_guess() -> u8 {
             }
 
             Err(e) => {
-                println!("Error parsing value: {e}");
+                println!("Couldn't parse value: {e}");
                 continue;
             }
         };
